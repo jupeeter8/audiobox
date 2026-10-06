@@ -4,10 +4,24 @@
     import Title from '$lib/components/Title.svelte';
     import data from '$lib/data/metadata.json'
 
+    import {Map, setWorkerUrl, Marker} from 'maplibre-gl';
+    import 'maplibre-gl/dist/maplibre-gl.css';
+    import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
+
+    setWorkerUrl(workerUrl);
+
+
+
     onMount(() =>{
-        const L = window.L
-        const map = L.map('map').setView([51.505, -0.09], 13);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        const map = new Map({
+            container: 'map',
+            style: 'https://demotiles.maplibre.org/style.json',
+            center: [-0.118092, 51.509865],
+            zoom: 10
+        });
+
+        new Marker().setLngLat([-0.118092, 51.509865]).addTo(map);
+
     })
 
     function setMapView(lat: number, long: number) {
@@ -33,7 +47,7 @@
         </nav>
     </div>
 </div>
-<div id=map class="h-50 w-[100vh]">
+<div id=map class="h-50 w-[100vw]">
 </div>
 <div>
     <audio bind:this={audioPlayer} src="{path}" controls></audio>
