@@ -15,12 +15,34 @@
     onMount(() =>{
         const map = new Map({
             container: 'map',
-            style: 'https://demotiles.maplibre.org/style.json',
-            center: [-0.118092, 51.509865],
-            zoom: 10
+            style: {
+                "version": 8,
+                "name": "watercolor",
+                "sources": {
+                    "stadia": {
+                        "type": "raster",
+                        "tiles": [
+                            "https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg"
+                        ],
+                        "tileSize": 256
+                    },
+                    "labels": {
+                      "type": "raster",
+                      "tiles": ["https://tiles.stadiamaps.com/tiles/stamen_terrain_labels/{z}/{x}/{y}@2x.png"],
+                      "tileSize": 256,
+                    },
+                },
+                "layers": [
+                    {"id": "testlayer", "source": "stadia", "type": "raster"},
+                    { id: "labels", type: "raster", source: "labels" }
+                ]
+            },
+            center: [126.975901, 37.578605],
+            zoom: 14
         });
 
-        new Marker().setLngLat([-0.118092, 51.509865]).addTo(map);
+
+        new Marker().setLngLat([126.975901, 37.578605]).addTo(map);
 
     })
 
