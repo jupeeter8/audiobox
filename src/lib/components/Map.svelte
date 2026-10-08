@@ -5,7 +5,7 @@
     import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
     setWorkerUrl(workerUrl);
 
-    let { marker }: { marker: number[]} = $props()
+    let { marker, inMapAnimation = $bindable() }: { marker: number[], inMapAnimation: boolean }= $props()
 
     let map
     let mapMarker
@@ -51,7 +51,10 @@
 
     $effect(() => {
         map.flyTo({center: marker, zoom: 14, speed: 2.2})
-        mapMarker.setLngLat(marker).addTo(map)
+        map.once('moveend', (e) => {
+            mapMarker.setLngLat(marker).addTo(map)
+            inMapAnimation = false
+        });
     })
 
 </script>
