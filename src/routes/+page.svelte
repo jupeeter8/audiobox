@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
     import  SoundCard  from '$lib/components/SoundCard.svelte';
     import Title from '$lib/components/Title.svelte';
     import data from '$lib/data/metadata.json';
@@ -19,10 +18,10 @@
         audioPlayer.load()
     }
 
-</script>
-<div class="w-4/5 m-auto h-[50vh] max-h-[50vh] flex flex-col mt-20 mb-3">
 
-    <Title></Title>
+</script>
+<!--<div class="w-4/5 m-auto h-[50vh] max-h-[50vh] flex flex-col mb-3">
+
 
     <div class="max-h-full">
         <nav class="flex flex-col overflow-scroll max-h-[75%]">
@@ -30,8 +29,9 @@
             </SoundCard>
         </nav>
     </div>
-</div>
+</div>-->
+<Title></Title>
 <Map marker={marker}></Map>
-<div>
-    <audio bind:this={audioPlayer} src="{path}" controls></audio>
+<div class="relative z-999">
+    <audio class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50" bind:this={audioPlayer} src="{path}" controls></audio>
 </div>

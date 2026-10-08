@@ -29,16 +29,16 @@
                         "type": "raster",
                         "tiles": ["https://tiles.stadiamaps.com/tiles/stamen_terrain_labels/{z}/{x}/{y}@2x.png"],
                         "tileSize": 512,
+                    },
+                    "osm": {
+                      "type": "raster",
+                      "tiles": ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
+                      "tileSize": 256,
                     }
-                    //"osm": {
-                    //  "type": "raster",
-                    //  "tiles": ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
-                    //  "tileSize": 256,
-                    //}
                 },
                 "layers": [
                     {"id": "watercolour", "source": "stadia", "type": "raster"},
-                    //{"id": "osm", "source": "osm", "type": "raster", paint: { "raster-opacity": 0.4 }},
+                    {"id": "osm", "source": "osm", "type": "raster", paint: { "raster-opacity": 0.4 }},
                     { id: "labels", type: "raster", source: "labels" }
                 ]
             },
@@ -55,4 +55,4 @@
     })
 
 </script>
-<div bind:this={mapContainer} id=map class="h-50 w-[100vw]"></div>
+<div bind:this={mapContainer} id=map class="h-[100vh] w-[100vw]"></div>
