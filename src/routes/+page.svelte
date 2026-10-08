@@ -28,7 +28,7 @@
 </script>
 <div class="fixed inset-x-0 top-0 z-50 flex min-h-full w-full flex-col items-center justify-between px-2 pointer-events-none">
     <Title inMapAnimation={inMapAnimation}></Title>
-        <nav class="w-full max-w-md flex flex-col overflow-y-auto overflow-x-hidden my-2 max-h-[20vh] px-2 pointer-events-auto transition-opacity duration-700 ease-in-out {inMapAnimation ? 'opacity-0' : 'opacity-100'}">
+        <nav class="w-full max-w-md sm:max-w-2xl flex flex-col overflow-y-auto overflow-x-hidden my-2 max-h-[30vh] px-2 pointer-events-auto transition-opacity duration-700 ease-in-out {inMapAnimation ? 'opacity-0' : 'opacity-100'}">
             <SoundCard items={data} {OnSelect}>
             </SoundCard>
         </nav>
