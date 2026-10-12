@@ -42,7 +42,7 @@
                     { id: "labels", type: "raster", source: "labels" }
                 ]
             },
-            zoom: 14
+            zoom: 10
         });
 
         map.setCenter(marker)
@@ -50,7 +50,7 @@
     })
 
     $effect(() => {
-        map.flyTo({center: marker, zoom: 14, speed: 2.2})
+        map.flyTo({center: marker, zoom: 10, speed: 2.2})
         map.once('moveend', (e) => {
             mapMarker.setLngLat(marker).addTo(map)
             inMapAnimation = false
